@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="csrf-token" content="">
+
+    
+    
+    
+
+    
+
+    <meta name="site_name" content="Экскурсии в Геленджике: квадроциклы, эндуро" /><meta property="og:site_name" content="Экскурсии в Геленджике: квадроциклы, эндуро" />
+    <meta name="url" content="https://kvadro93.ru/kvadro-rpice.pdf" /><meta property="og:url" content="https://kvadro93.ru/kvadro-rpice.pdf" />
+    <meta name="locale" content="ru" /><meta property="og:locale" content="ru" />
+
+    
+    
+
+    <!-- Styles -->
+    <link href="https://kvadro93.ru/css/sanitize.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://kvadro93.ru/css/styles.css">
+
+    <!-- Font -->
+    <link rel="stylesheet" href="https://kvadro93.ru/css/kvadro93.woff2.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/favicons/site.webmanifest">
+
+    
+    <meta name="theme-color" content="#000">
+    
+    <meta name="msapplication-navbutton-color" content="#000">
+    
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000">
+
+</head>
+
+<body id="body">
+
+    <script type="text/javascript">(function(window,document,n,project_ids){window.GudokData=n;if(typeof project_ids !== "object"){project_ids = [project_ids]};window[n] = {};window[n]["projects"]=project_ids;config_load(project_ids.join(','));function config_load(cId){var a=document.getElementsByTagName("script")[0],s=document.createElement("script"),i=function(){a.parentNode.insertBefore(s,a)};s.type="text/javascript";s.async=true;s.src="//mod.gudok.tel/script.js?sid="+cId;if(window.opera == "[object Opera]"){document.addEventListener("DOMContentLoaded", i, false)}else{i()}}})(window, document, "gd", "tqr9j3ex97");</script>
+
+    
+    <div class="section section--error">
+        <div class="section__error-logo">
+            <img src="/images/logo-default.svg" alt="Kvadro93">
+        </div>
+        <div class="section__error-title">Ошибка 404</div>
+        <div class="section__error-description">Вы ищете страницу, которой не существует</div>
+        <div>
+            <a class="button" href="https://kvadro93.ru">Перейти на главную</a>
+        </div>
+    </div>
+
+
+    
+
+</body>
+
+</html>
