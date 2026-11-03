@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-<head><meta name="robots" content="noindex, nofollow"> 
+<head> 
 
 
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
     <meta name="description" content="ПОЛИТИКА ИСПОЛЬЗОВАНИЯ COOKIE Настоящая Политика использования файлов cookie (далее — «Политика») определяет порядок сбора, хранения и обработки данных с…" /><meta property="og:description" content="ПОЛИТИКА ИСПОЛЬЗОВАНИЯ COOKIE Настоящая Политика использования файлов cookie (далее — «Политика») определяет порядок сбора, хранения и обработки данных с…" /><meta name="twitter:description" content="ПОЛИТИКА ИСПОЛЬЗОВАНИЯ COOKIE Настоящая Политика использования файлов cookie (далее — «Политика») определяет порядок сбора, хранения и обработки данных с…" />
     
 
-    
+    <meta name="robots" content="index, follow" />
 
     <meta name="site_name" content="Экскурсии в Геленджике: квадроциклы, эндуро" /><meta property="og:site_name" content="Экскурсии в Геленджике: квадроциклы, эндуро" />
     <meta name="url" content="https://kvadro93.ru/cookie-policy" /><meta property="og:url" content="https://kvadro93.ru/cookie-policy" />
@@ -996,7 +996,168 @@
         
     </div>
 
-    
+    <script>
+    // ============================================================
+    // ЛОГИКА БАННЕРА
+    // ============================================================
+    (function() {
+        var banner = document.getElementById('cookie-banner');
+        var categories = document.getElementById('cookie-categories');
+        var settingsLink = document.getElementById('cookie-settings-link');
+        var acceptBtn = document.getElementById('cookie-accept-btn');
+        var declineBtn = document.getElementById('cookie-decline-btn');
+        var saveBtn = document.getElementById('cookie-save-btn');
+        var analyticsCheckbox = document.getElementById('cookie-analytics');
+        
+        var CONSENT_KEY = 'kvadro93_cookies_consent_v1';
+        
+        // Загрузка сохранённого согласия
+        function loadConsent() {
+            try {
+                var raw = localStorage.getItem(CONSENT_KEY);
+                if (!raw) return null;
+                return JSON.parse(raw);
+            } catch (e) { return null; }
+        }
+        
+        // Сохранение согласия
+        function saveConsent(analytics) {
+            var data = {
+                analytics: analytics,
+                timestamp: Date.now()
+            };
+            try {
+                localStorage.setItem(CONSENT_KEY, JSON.stringify(data));
+            } catch (e) {}
+        }
+        
+        // Обновление внешнего вида переключателя
+        function updateToggleStyle(toggle) {
+            var span = toggle.parentElement.querySelector('span:first-of-type');
+            var thumb = toggle.parentElement.querySelector('span:last-of-type');
+            if (toggle.checked) {
+                span.style.background = '#bc2222';
+                thumb.style.transform = 'translateX(20px)';
+            } else {
+                span.style.background = '#555555';
+                thumb.style.transform = 'translateX(0)';
+            }
+        }
+        
+        // Показать баннер
+        function showBanner() {
+            banner.style.display = 'block';
+        }
+        
+        // Скрыть баннер
+        function hideBanner() {
+            banner.style.display = 'none';
+        }
+        
+        // Закрыть баннер и сохранить настройки
+        function closeBanner(analytics) {
+            saveConsent(analytics);
+            hideBanner();
+            if (analytics) { loadAnalytics(); }
+        }
+        
+        // Переключение категорий
+        function toggleCategories(show) {
+            if (show) {
+                categories.style.display = 'flex';
+                saveBtn.style.display = 'block';
+                acceptBtn.style.display = 'none';
+                declineBtn.style.display = 'none';
+            } else {
+                categories.style.display = 'none';
+                saveBtn.style.display = 'none';
+                acceptBtn.style.display = 'block';
+                declineBtn.style.display = 'block';
+            }
+        }
+        
+
+        // ============================================================
+        // ЗАГРУЗКА АНАЛИТИКИ — ТОЛЬКО ПОСЛЕ СОГЛАСИЯ (152-ФЗ ст.9 в ред. 156-ФЗ, ФЗ-420)
+        // ============================================================
+        var analyticsLoaded = false;
+        function loadAnalytics() {
+            if (analyticsLoaded) return;
+            analyticsLoaded = true;
+
+            // Яндекс.Метрика
+            (function(m,e,t,r,i,k,a){
+                m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                m[i].l=1*new Date();
+                for (var j=0; j<document.scripts.length; j++){ if (document.scripts[j].src===r){ return; } }
+                k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+            })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+            ym(54255589, 'init', {webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+            ym(110573738, 'init', {clickmap:true, trackLinks:true, accurateTrackBounce:true});
+
+            // Виджеты, ставящие сторонние cookies, — только после согласия
+            var deferred = document.querySelectorAll('iframe[data-consent-src]');
+            for (var d = 0; d < deferred.length; d++) {
+                deferred[d].src = deferred[d].getAttribute('data-consent-src');
+            }
+
+            // Top.Mail.Ru
+            var _tmr = window._tmr || (window._tmr = []);
+            _tmr.push({id: "3585987", type: "pageView", start: (new Date()).getTime()});
+            (function (d, w, id) {
+                if (d.getElementById(id)) return;
+                var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+                ts.src = "https://top-fwz1.mail.ru/js/code.js";
+                var f = function () { var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s); };
+                if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+            })(document, window, "tmr-code");
+        }
+
+        // Отзыв согласия — обязателен по 152-ФЗ ст.9 ч.2
+        window.kvadroRevokeCookies = function() {
+            try { localStorage.removeItem(CONSENT_KEY); } catch (e) {}
+            location.reload();
+        };
+
+        // === ИНИЦИАЛИЗАЦИЯ ===
+        
+        // Применяем стили к переключателю
+        updateToggleStyle(analyticsCheckbox);
+        analyticsCheckbox.addEventListener('change', function() {
+            updateToggleStyle(this);
+        });
+        
+        // Проверяем сохранённое согласие
+        var saved = loadConsent();
+        if (saved !== null) {
+            hideBanner();
+            if (saved.analytics) { loadAnalytics(); }
+            return;
+        }
+        
+        showBanner();
+        
+        // === ОБРАБОТЧИКИ ===
+        acceptBtn.addEventListener('click', function() {
+            closeBanner(true);
+        });
+        
+        declineBtn.addEventListener('click', function() {
+            closeBanner(false);
+        });
+        
+        saveBtn.addEventListener('click', function() {
+            closeBanner(analyticsCheckbox.checked);
+        });
+        
+        settingsLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleCategories(true);
+        });
+        
+    })();
+    </script>
 </body>
 
 </html>

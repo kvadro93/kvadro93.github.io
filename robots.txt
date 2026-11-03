@@ -1,2 +1,18 @@
 User-agent: *
-Disallow: /
+Disallow: *?*
+Disallow: /dashboard
+Disallow: /login
+Disallow: /favicons/
+Allow: /thumb/
+Allow: /
+
+User-agent: Yandex
+Disallow: *?*
+Disallow: /dashboard
+Disallow: /login
+Disallow: /favicons/
+Allow: /thumb/
+Allow: /
+Clean-param: etext&utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&from&_openstat&ysclid
+
+Sitemap: https://kvadro93.ru/sitemap.xml
