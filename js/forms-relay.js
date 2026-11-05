@@ -1,10 +1,10 @@
-/* Временная отправка заявок на почту, пока CRM и сервер недоступны */
+/* Временная отправка заявок на почту (Web3Forms), пока CRM и сервер недоступны */
 (function(){
-  var TO='https://formsubmit.co/ajax/kvadro93.ru@yandex.ru';
+  var TO='https://api.web3forms.com/submit', KEY='bd57f9fb-ef81-40eb-8799-fa9895c37247';
   var RULES=[[/crm\.kvadro93\.ru\/api\/v1\/booking\/create/,'Бронь'],[/\/api\/order\/shop/,'Заказ из магазина'],[/\/api\/feedback\/shop/,'Вопрос из магазина'],[/\/api\/feedback\/?$/,'Обратная связь']];
   var L={service_id:'ID услуги',name:'Имя',phone:'Телефон',email:'Email',message:'Сообщение',date:'Дата',time:'Время',transfer:'Трансфер',address:'Адрес',adults:'Взрослых',childs:'Детей',peoples:'Человек',technics:'Техника',page:'Страница',url:'Ссылка',product:'Товар',access:'Аксессуары',color:'Цвет'};
   function fmt(d,kind){
-    var o={_subject:kind+' с сайта kvadro93.ru'+(d.page?' — '+d.page:(d.product?' — '+d.product:'')),_template:'table',_captcha:'false'};
+    var o={access_key:KEY,subject:kind+' с сайта kvadro93.ru'+(d.page?' — '+d.page:(d.product?' — '+d.product:'')),from_name:'Сайт kvadro93.ru'};
     for(var k in d){ if(!L[k]) continue; var v=d[k];
       if(k==='technics'){ v=(v||[]).map(function(t){return t.place+(t.teacher?' (с инструктором)':'')}).join('; '); }
       if(k==='transfer'){ v=v?'да':'нет'; }
